@@ -1648,10 +1648,11 @@ function init() {
   renderBudget();
   initSheets();
 
-  // Add some sample data if empty
-  if (transactions.length === 0) {
+  // Add some sample data if empty AND never loaded before
+  if (transactions.length === 0 && !localStorage.getItem('ff_initialized')) {
     addSampleData();
   }
+  localStorage.setItem('ff_initialized', 'true');
 }
 
 function addSampleData() {
